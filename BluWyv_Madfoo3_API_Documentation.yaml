@@ -1,0 +1,227 @@
+openapi: 3.0.2
+info:
+    title: New API
+    version: 1.0.0
+    description: BluWyv Madfoo3 API
+paths:
+    /verify:
+        post:
+            requestBody:
+                description: Verify Request Body
+                content:
+                    text/xml:
+                        schema:
+                            $ref: '#/components/schemas/VerifyRequest'
+                required: true
+            responses:
+                '200':
+                    content:
+                        text/xml:
+                            schema:
+                                $ref: '#/components/schemas/VerifyResponse'
+                    description: Verify Response
+            summary: Verify Client
+    /cancelPayment:
+        post:
+            requestBody:
+                content:
+                    text/xml:
+                        schema:
+                            $ref: '#/components/schemas/cancelPaymentRequest'
+                required: true
+            responses:
+                '200':
+                    content:
+                        text/xml:
+                            schema:
+                                $ref: '#/components/schemas/cancelPaymentResponse'
+                    description: Cancel payment response
+    /confirmPayment:
+        post:
+            requestBody:
+                content:
+                    text/xml:
+                        schema:
+                            $ref: '#/components/schemas/ConfirmPaymentRequest'
+                required: true
+            responses:
+                '200':
+                    content:
+                        text/xml:
+                            schema:
+                                $ref: '#/components/schemas/ConfirmPaymentResponse'
+                    description: This is confirm payment response
+components:
+    schemas:
+        Agent:
+            description: This ithe agent description
+            required:
+                - id
+                - name
+                - code
+                - cell_number
+                - nationalId
+                - companyName
+            type: object
+            properties:
+                id:
+                    description: ''
+                    type: string
+                name:
+                    description: ''
+                    type: string
+                code:
+                    description: ''
+                    type: string
+                cellNumber:
+                    description: ''
+                    type: string
+                nationalId:
+                    description: ''
+                    type: string
+                companyName:
+                    description: ''
+                    type: string
+        VerifyRequest:
+            description: ''
+            required:
+                - messageId
+                - nationalId
+                - clientReferenceType
+            type: object
+            properties:
+                messageId:
+                    description: ''
+                    type: string
+                nationalId:
+                    description: ''
+                    type: string
+                clientReferenceType:
+                    $ref: '#/components/schemas/ClientReferenceType'
+                    description: ''
+                clientReferenceValue:
+                    description: ''
+                    type: string
+        VerifyResponse:
+            description: ''
+            required:
+                - messageId
+                - status
+            type: object
+            properties:
+                messageId:
+                    description: ''
+                status:
+                    description: |-
+                        0 = success
+                        404 = not found
+                        500 = error
+                    type: integer
+                clientDetail:
+                    description: ''
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Agent'
+        ClientReferenceType:
+            description: ''
+            enum:
+                - agent
+                - merchant
+            type: string
+        ConfirmPaymentRequest:
+            description: ''
+            required:
+                - messageId
+                - clientReferenceType
+                - clientReferenceValue
+                - referenceNumber
+                - amount
+                - geoLocation
+                - city
+                - province
+            type: object
+            properties:
+                messageId:
+                    description: ''
+                    type: string
+                clientReferenceType:
+                    $ref: '#/components/schemas/ClientReferenceType'
+                    description: ''
+                clientReferenceValue:
+                    description: ''
+                    type: string
+                referenceNumber:
+                    description: ''
+                    type: string
+                amount:
+                    description: ''
+                    type: number
+                geoLocation:
+                    description: Geo location of where the payment was received
+                    type: string
+                city:
+                    description: City where the payment was received
+                    type: string
+                province:
+                    description: Province where the payment was collected
+                    type: string
+        ConfirmPaymentResponse:
+            description: ''
+            required:
+                - messageId
+                - status
+                - transactionId
+            type: object
+            properties:
+                messageId:
+                    description: ''
+                    type: string
+                status:
+                    description: |-
+                        0 = success
+                        404 = agent not found
+                        500 = error
+                    type: integer
+                transactionId:
+                    description: ''
+                    type: string
+                message:
+                    description: 'if there is an error, it might be a good idea to read this message'
+                    type: string
+        cancelPaymentRequest:
+            description: ''
+            required:
+                - messageId
+                - refrenceNumber
+                - reasonCode
+            type: object
+            properties:
+                messageId:
+                    description: ''
+                    type: string
+                refrenceNumber:
+                    description: ''
+                    type: string
+                reasonCode:
+                    description: 1 = payment made by mistake
+                    type: integer
+        cancelPaymentResponse:
+            description: ''
+            required:
+                - messageId
+                - status
+                - transactionId
+            type: object
+            properties:
+                messageId:
+                    description: ''
+                status:
+                    description: |-
+                        0 = success
+                        1 = pending
+                        404 = payment not found
+                        500 = error
+                    type: integer
+                transactionId:
+                    description: ''
+                    type: string
