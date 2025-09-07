@@ -93,14 +93,14 @@ Validates client identity and retrieves detailed client information.
     <messageId>MSG-2024-001234</messageId>
     <status>0</status>
     <clientDetail>
-        <Agent>
+        <agent>
             <id>AGT-5678</id>
             <name>John Smith</name>
             <code>JS001</code>
             <cellNumber>+27821234567</cellNumber>
             <nationalId>1234567890123</nationalId>
             <companyName>BluWyv Payments Ltd</companyName>
-        </Agent>
+        </agent>
     </clientDetail>
 </VerifyResponse>
 ```
