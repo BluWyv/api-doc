@@ -136,7 +136,8 @@ components:
                 - clientReferenceValue
                 - referenceNumber
                 - amount
-                - geoLocation
+                - postOfficeNumber
+                - postOfficeName
                 - city
                 - province
             type: object
@@ -156,8 +157,11 @@ components:
                 amount:
                     description: ''
                     type: number
-                geoLocation:
-                    description: Geo location of where the payment was received
+                postOfficeNumber:
+                    description: Postoffice number the payment was received
+                    type: string
+                postOfficeName:
+                    description: Postoffice name the payment was received
                     type: string
                 city:
                     description: City where the payment was received
