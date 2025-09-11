@@ -134,7 +134,8 @@ Processes and confirms a payment transaction with location tracking.
     <clientReferenceValue>MER-9012</clientReferenceValue>
     <referenceNumber>REF-20240315-001</referenceNumber>
     <amount>1500.50</amount>
-    <geoLocation>-26.2041,28.0473</geoLocation>
+    <postOfficeNumber>PO45444</postOfficeNumber>
+    <<postOfficeName>Samanound</postOfficeName>
     <city>Johannesburg</city>
     <province>Gauteng</province>
 </ConfirmPaymentRequest>
@@ -149,7 +150,8 @@ Processes and confirms a payment transaction with location tracking.
 | clientReferenceValue | string | Yes | Reference value identifying the client |
 | referenceNumber | string | Yes | Unique payment reference number |
 | amount | number | Yes | Payment amount (decimal value) |
-| geoLocation | string | Yes | GPS coordinates of payment location (latitude,longitude) |
+| postOfficeName | string | Yes | Post office name |
+| postOfficeNumber | string | Yes | Post office number location |
 | city | string | Yes | City where the payment was received |
 | province | string | Yes | Province where the payment was collected |
 
@@ -318,11 +320,13 @@ The API uses HTTP status code 200 for all responses, with the actual operation s
 - Include date/time stamps in reference numbers for easier tracking
 - Format suggestion: `REF-YYYYMMDD-NNNN`
 
-### Geolocation Data
+### postOfficeName
 
-- Provide accurate GPS coordinates in decimal degrees format
-- Format: `latitude,longitude` (e.g., `30.0444,31.2357`)
-- Ensure location services are enabled for accurate tracking
+- Provide accurate post office name
+
+### postOfficeNumber
+
+- Provide accurate post office number
 
 ### Error Recovery
 
