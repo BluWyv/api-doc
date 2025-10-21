@@ -105,6 +105,42 @@ Validates client identity and retrieves detailed client information.
 </VerifyResponse>
 ```
 
+**In rare occasions, sometimes an agent or merchant is working for multiple companies. Each instance of that agent will have a different code which identifies the agent**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<VerifyResponse>
+    <messageId>MSG-2024-001234</messageId>
+    <status>0</status>
+    <clientDetail>
+        <agent>
+            <id>AGT-5678</id>
+            <name>John Smith</name>
+            <code>JS001</code>
+            <cellNumber>+27821234567</cellNumber>
+            <nationalId>1234567890123</nationalId>
+            <companyName>BluWyv Payments Ltd</companyName>
+        </agent>
+        <agent>
+            <id>AGT-9012</id>
+            <name>John Smith</name>
+            <code>JD002</code>
+            <cellNumber>+27829876543</cellNumber>
+            <nationalId>1234567890123</nationalId>
+            <companyName>Pepsico</companyName>
+        </agent>
+        <agent>
+            <id>AGT-3456</id>
+            <name>John Smith</name>
+            <code>AB003</code>
+            <cellNumber>+27825558888</cellNumber>
+            <nationalId>1234567890123</nationalId>
+            <companyName>Mobile Gas</companyName>
+        </agent>
+    </clientDetail>
+</VerifyResponse>
+```
+
 **Response - Not Found (200 OK with error status):**
 
 ```xml
