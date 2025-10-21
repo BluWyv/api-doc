@@ -112,6 +112,7 @@ Validates client identity and retrieves detailed client information.
 <VerifyResponse>
     <messageId>MSG-2024-001234</messageId>
     <status>404</status>
+    <message>No record was found</message>
     <clientDetail/>
 </VerifyResponse>
 ```
