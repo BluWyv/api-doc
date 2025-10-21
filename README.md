@@ -183,7 +183,7 @@ Processes and confirms a payment transaction with location tracking.
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | messageId | string | Yes | Unique identifier for the request message |
-| clientReferenceType | enum | Yes | Type of client reference (`agent` or `merchant`) |
+| clientReferenceType | enum | No | Type of client reference (`agent` or `merchant`) |
 | clientReferenceValue | string | Yes | Reference value identifying the client |
 | referenceNumber | string | Yes | Unique payment reference number |
 | amount | number | Yes | Payment amount (decimal value) |
