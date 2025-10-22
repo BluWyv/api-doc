@@ -37,6 +37,7 @@ The BluWyv Madfoo3 API consists of three core operations:
 ## Authentication & Security
 
 *Note: Authentication details should be obtained from your BluWyv account manager. Ensure all API calls are made over HTTPS to maintain data security.*
+*If you are connected via VPN, you can connect without authentication and can connect via HTTP*
 
 ## Base URL
 
