@@ -82,9 +82,9 @@ Validates client identity and retrieves detailed client information.
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | messageId | string | Yes | Unique identifier for the request message |
-| nationalId | string | Yes | National identification number of the client |
+| nationalId | string | No | National identification number of the client |
 | clientReferenceType | enum | No | Type of client reference (`agent` or `merchant`) |
-| clientReferenceValue | string | No | Additional reference value for the client |
+| clientReferenceValue | string | yes | Additional reference value for the client |
 
 **Response - Success (200 OK):**
 
